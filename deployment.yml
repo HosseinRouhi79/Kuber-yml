@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-app-pg
+  labels:
+    app: deployment
+    type: backend
+spec:
+  template:
+    metadata:
+      name: myapp-pod
+      labels:
+        app: myapp
+        type: backend
+    spec:
+      containers:
+      - name: postgres-container
+        image: postgres
+  replicas: 4
+  selector:
+    matchLabels:      
+      type: backend
+
+
+
+
